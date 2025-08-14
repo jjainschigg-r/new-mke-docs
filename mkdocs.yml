@@ -1,0 +1,443 @@
+site_name: Documentation
+site_description: Documentation for Mirantis k0rdent Enterprise.
+site_author: Mirantis, Inc.
+
+docs_dir: docs/
+repo_name: k0rdent/kcm
+repo_url: https://github.com/k0rdent/kcm
+edit_uri: https://github.com/Mirantis/k0rdent-enterprise-docs/edit/main/docs/
+
+copyright:
+  Copyright &copy; 2025 Mirantis | Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0/legalcode.txt">CC-BY-4.0</a>.
+  -- <a href="#__consent">Change cookie settings</a>
+
+theme:
+  name: "material"
+  highlightjs: true
+  language: "en"
+  custom_dir: docs/custom_theme
+  favicon: img/k0rdent-logo-mark.svg
+  logo: img/k0rdent-enterprise-logo-horizontal-inverted.svg
+  
+  palette:
+    - scheme: default
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    - scheme: slate
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+  features:
+    - toc.autohide
+    - search.suggest
+    - search.highlight
+    - content.code.copy
+    - navigation.tracking   # Anchor tracking
+    - toc.follow            # Sidebar is automatically scrolled so that the active anchor is always visible
+    - search.suggest        # Search suggestions
+    - search.highlight      # Search highlights all occurrences after following the link
+    # - content.action.edit
+    - content.action.view
+    - navigation.path       # Not working, for sponsors only
+    - navigation.indexes
+    # - navigation.tabs
+    # - navigation.tabs.sticky
+
+extra_css:
+  - stylesheets/extra.css
+
+extra_javascript:
+  - javascripts/feedback.js
+  - javascripts/plausible.js
+
+plugins:
+  - search
+  - ezglossary:
+      section_config:
+        - name: demo
+          inline_refs: short
+  - macros:
+      j2_variable_start_string: "{{{"
+      j2_variable_end_string: "}}}"
+  - exclude:
+      glob:
+        - "*.etag"
+        - Dockerfile.serve-dev
+        - Makefile*
+        - requirements_pip.txt
+        - requirements.txt
+  - redirects:
+      redirect_maps:
+        why-k0rdent.md: concepts/why-k0rdent.md
+        k0rdent-architecture.md: concepts/k0rdent-architecture.md
+        guide-to-quickstarts.md: quickstarts/index.md
+        quickstart-1-mgmt-node-and-cluster.md: quickstarts/quickstart-1-mgmt-node-and-cluster.md
+        quickstart-2-aws.md: quickstarts/quickstart-2-aws.md
+        quickstart-2-azure.md: quickstarts/quickstart-2-azure.md
+        quickstart-2-remote.md: quickstarts/quickstart-2-remote.md
+        quickstart-2-gcp.md: quickstarts/quickstart-2-gcp.md
+        admin-before.md: admin/index.md
+        admin-installation.md: admin/installation/index.md
+        admin-prepare.md: admin/installation/prepare-mgmt-cluster/index.md
+        admin-creating-clusters.md: admin/clusters/index.md
+        admin-adopting-clusters.md: admin/clusters/admin-adopting-clusters.md
+        admin-hosted-control-planes.md: admin/hosted-control-plane/index.md
+        admin-troubleshooting-aws-vpcs.md: troubleshooting/admin-troubleshooting-aws-vpcs.md
+        admin-service-templates.md: admin/services/admin-service-templates.md
+        admin-create-multiclusterservice.md: admin/services/admin-create-multiclusterservice.md
+        admin-kof.md: admin/kof/index.md
+        admin-upgrading-k0rdent.md: admin/upgrade/index.md
+        admin-credentials.md: admin/access/credentials/index.md
+        admin-rbac.md: admin/access/rbac/index.md
+        admin-backup.md: admin/backup/index.md
+        user-create-cluster.md: user/user-create-cluster.md
+        user-create-service.md: user/services/index.md 
+        user-enable-drift-detection.md: user/user-enable-drift-detection.md
+        template-intro.md: reference/template/index.md
+        template-predefined.md: reference/template/template-predefined.md
+        template-byo.md: reference/template/template-byo.md
+        template-aws.md: reference/template/template-aws.md
+        template-azure.md: reference/template/template-azure.md
+        template-openstack.md: reference/template/template-openstack.md
+        template-vsphere.md: reference/template/template-vsphere.md
+        template-gcp.md: reference/template/template-gcp.md
+        known-issues-eks.md: troubleshooting/known-issues-eks.md
+        glossary.md: appendix/glossary.md
+        appendix-extend-mgmt.md: appendix/appendix-extend-mgmt.md
+        appendix-dryrun.md: appendix/appendix-dryrun.md
+        appendix-providers.md: appendix/appendix-providers.md
+        admin/access/credentials/credentials-propogation.md: admin/access/credentials/credentials-propagation.md
+        credentials-propogation.md: admin/access/credentials/credentials-propagation.md
+ 
+nav:
+  - Welcome to the docs: index.md
+  - k0rdent concepts:
+    - Overview: concepts/index.md
+    - Why k0rdent?: concepts/why-k0rdent.md
+    - k0rdent architecture: concepts/k0rdent-architecture.md
+  - QuickStarts:
+    - Guide to Quickstarts: quickstarts/index.md
+    - Setup Management Cluster: quickstarts/quickstart-1-mgmt-node-and-cluster.md
+    - Configure and Deploy to AWS: quickstarts/quickstart-2-aws.md
+    - Configure and Deploy to Azure: quickstarts/quickstart-2-azure.md
+    - Configure and Deploy w/ SSH: quickstarts/quickstart-2-remote.md
+    - Configure and Deploy to GCP: quickstarts/quickstart-2-gcp.md
+  - Administrator Guide:
+    - Before you start: admin/index.md
+    - Installation:
+      - Overview: admin/installation/index.md
+      - Creating the management cluster:
+        - Overview: admin/installation/create-mgmt-clusters/index.md
+        - Create a single node k0s cluster: admin/installation/create-mgmt-clusters/mgmt-create-k0s-single.md
+        - Create a multi-node k0s cluster: admin/installation/create-mgmt-clusters/mgmt-create-k0s-multi.md
+        - Create a multinode EKS cluster: admin/installation/create-mgmt-clusters/mgmt-create-eks-multi.md
+      - Install k0rdent: admin/installation/install-k0rdent.md
+      - Install k0rdent in airgapped environment: 
+        - Overview: admin/installation/airgap/index.md
+        - Prerequisites: admin/installation/airgap/airgap-prereq.md
+        - Installing an HTTP server: admin/installation/airgap/airgap-http.md
+        - Get the airgap bundles: admin/installation/airgap/airgap-bundles.md
+        - Install k0rdent: admin/installation/airgap/airgap-install.md
+      - Verifying Artifacts and Security: admin/installation/sbom.md
+      - Verify the k0rdent installation: admin/installation/verify-install.md
+      - Prepare k0rdent to create child clusters:
+        - Overview: admin/installation/prepare-mgmt-cluster/index.md
+        - AWS: admin/installation/prepare-mgmt-cluster/aws.md
+        - Azure: admin/installation/prepare-mgmt-cluster/azure.md
+        - Bare Metal: admin/installation/prepare-mgmt-cluster/bare-metal.md
+        - GCP: admin/installation/prepare-mgmt-cluster/gcp.md
+        - OpenStack: admin/installation/prepare-mgmt-cluster/openstack.md
+        - VMware: admin/installation/prepare-mgmt-cluster/vmware.md
+      - Authentication:
+        - Overview: admin/installation/auth/index.md
+        - Okta: admin/installation/auth/okta.md
+        - Entra-ID: admin/installation/auth/entra-id.md
+        - Pinniped: admin/installation/auth/pinniped.md
+    - Working with clusters: 
+      - Overview: admin/clusters/index.md
+      - Deploying standalone clusters: admin/clusters/deploy-cluster.md
+      - Updating standalone clusters: admin/clusters/update-cluster.md
+      - Adopting clusters: admin/clusters/admin-adopting-clusters.md
+      - IP Address Management (IPAM): admin/clusters/cluster-ipam.md
+    - Working with services:
+      - Overview: admin/services/index.md
+      - Using and creating service templates: admin/services/admin-service-templates.md
+      - Creating multi-cluster services: admin/services/admin-create-multiclusterservice.md
+    - Hosted control planes: 
+      - Overview: admin/hosted-control-plane/index.md
+      - AWS: admin/hosted-control-plane/hcp-aws.md
+      - Azure: admin/hosted-control-plane/hcp-azure.md
+      - OpenStack: admin/hosted-control-plane/hcp-openstack.md
+      - VMware: admin/hosted-control-plane/hcp-vmware.md
+      - GCP: admin/hosted-control-plane/hcp-gcp.md
+    - k0rdent Observability & FinOps: 
+      - Overview: admin/kof/index.md
+      - Architecture: admin/kof/kof-architecture.md
+      - Installing KOF: admin/kof/kof-install.md
+      - Verifying the KOF installation: admin/kof/kof-verification.md
+      - Using KOF: admin/kof/kof-using.md
+      - KOF Alerts: admin/kof/kof-alerts.md      
+      - Storing KOF data: admin/kof/kof-storing.md
+      - Scaling KOF: admin/kof/kof-scaling.md
+      - Maintaining KOF: admin/kof/kof-maintainence.md
+      - Resource Limits: admin/kof/kof-limits.md
+      - Version Compatibility: admin/kof/kof-version-compat.md
+    - Upgrading k0rdent: 
+      - Overview: admin/upgrade/index.md
+    - Access Management:
+      - Overview: admin/access/index.md
+      - k0rdent Credentials Management: 
+        - Overview: admin/access/credentials/index.md
+        - The Credentials Process: admin/access/credentials/credentials-process.md
+        - Credential Propagation: admin/access/credentials/credentials-propagation.md
+      - k0rdent Role Based Access Control (RBAC): 
+        - Overview: admin/access/rbac/index.md
+        - What Roles Do: admin/access/rbac/what-roles-do.md
+        - Role Definitions: admin/access/rbac/roles-summary.md
+    - Backup and Restore:
+      - Overview: admin/backup/index.md
+      - Preparing for Backup: admin/backup/prepare-backups.md      
+      - Scheduled Management Backups: admin/backup/scheduled-backups.md
+      - Management Backup on Demand: admin/backup/ondemand-backups.md
+      - What's Included in a Backup: admin/backup/whats-included.md
+      - Restoring From Backup: admin/backup/restore.md
+      - Upgrades and Rollbacks: admin/backup/upgrades-rollbacks.md
+      - Caveats: admin/backup/caveats.md
+      - Customization: admin/backup/customization.md
+    - Troubleshooting: 
+      - Overview: troubleshooting/index.md
+      - Events: troubleshooting/events.md
+      - AWS VPCs: troubleshooting/admin-troubleshooting-aws-vpcs.md
+      - EKS: troubleshooting/known-issues-eks.md
+      - GCP: troubleshooting/known-issues-gcp.md
+      - Custom CA Certificates: troubleshooting/known-issues-custom-ca.md
+    - User Guide:
+      - Overview: user/index.md
+      - Creating clusters: user/user-create-cluster.md
+      - Adding services: 
+        - Overview: user/services/index.md
+        - Understanding ServiceTemplates: user/services/understanding-servicetemplates.md
+        - Adding a Service to a ClusterDeployment: user/services/add-service-to-clusterdeployment.md
+        - Beach Head Services: user/services/beach-head.md
+        - Checking Status: user/services/checking-status.md
+        - Remove Beach Head Services: user/services/remove-beach-head.md
+        - ServiceTemplate Parameters: user/services/servicetemplate-parameters.md
+        - Upgrading Deployed Services: user/services/service-upgrade.md
+      - Enabling drift detection: user/user-enable-drift-detection.md
+  - Solutions:
+    - Overview: addons/index.md
+    - Mirantis k0rdent AI: k0rdent_ai.md
+    - Mirantis k0rdent Virtualization:
+      - Overview: addons/mkvirt/index.md
+      - Install Mirantis k0rdent Virtualization and HCO: addons/mkvirt/mkvirt-install.md
+      - Virtualization Configuration: addons/mkvirt/configuration.md
+      - Getting Started: addons/mkvirt/getting-started.md
+      - Windows on Mirantis k0rdent Virtualization: addons/mkvirt/mkvirt-windows.md
+      - Virtualization Best Practices: addons/mkvirt/best-practices.md
+    - Mirantis k0rdent UI:
+      - Overview: addons/ui/index.md
+      - Configuration: addons/ui/k0rdent-ui-config.md
+      - Usage: addons/ui/k0rdent-ui-usage.md
+  - Reference:
+    - Overview: reference/index.md
+    - k0rdent CRDs: reference/crds/index.md    
+    - k0rdent Templates Reference:
+      - Introduction to k0rdent templates: reference/template/index.md
+      - Removing predefined templates: reference/template/template-predefined.md
+      - Bring-your-own (BYO) templates: reference/template/template-byo.md
+      - Templates for Amazon Web Services: reference/template/template-aws.md
+      - Templates for Azure: reference/template/template-azure.md
+      - Templates for GCP: reference/template/template-gcp.md
+      - Templates for OpenStack: reference/template/template-openstack.md
+      - Templates for vSphere: reference/template/template-vsphere.md
+      - Templates for Remote SSH: reference/template/template-remote.md
+  - Appendix:
+    - Overview: appendix/index.md
+    - Glossary: appendix/glossary.md
+    - Extended management configuration: appendix/appendix-extend-mgmt.md
+    - Deploy from a private secure registry: appendix/private-secure-registry.md
+    - Understanding the dry run: appendix/appendix-dryrun.md
+    - Cloud provider credentials management in CAPI: appendix/appendix-providers.md
+  - Release Notes:
+    - Overview: release-notes/index.md
+    - v1.0.0: release-notes/release-notes-v1.0.0.md
+  - k0rdent Catalog:
+    - Overview: catalog/index.md
+    - Ceph:
+      - Overview: addons/ceph/index.md
+      - Installing Ceph: addons/ceph/ceph-install.md
+      - Installing Ceph in an airgapped environment: addons/ceph/ceph-airgap.md
+      - Configuring Ceph: 
+        - Overview:  addons/ceph/configuration/index.md
+        - MiraCeph: addons/ceph/configuration/MiraCeph.md
+        - MiraCephHealth: addons/ceph/configuration/MiraCephHealth.md
+        - MiraCephSecret: addons/ceph/configuration/MiraCephSecret.md
+        - CephOsdRemoveRequest: addons/ceph/configuration/CephOsdRemoveRequest.md
+        - CephPerfTestRequest: addons/ceph/configuration/CephPerfTestRequest.md
+      - Using MiraCeph Instead of KaasCephCluster: addons/ceph/replace-kaascephcluster.md
+      - Operating Ceph: addons/ceph/ceph-operating.md
+      - Ceph Examples: addons/ceph/ceph-user-scenarios.md
+  - Support, Services, Contact:
+    - Overview: support/index.md
+    - Get support: https://www.mirantis.com/support/enterprise-support-services/
+    - Mirantis CloudCare Portal: https://support.mirantis.com/s/login/
+    - Contact us: https://www.mirantis.com/contact/
+
+markdown_extensions:
+  - callouts
+  - tables
+  - pymdownx.details
+  - pymdownx.highlight: {}
+  - pymdownx.superfences: {}
+  - pymdownx.inlinehilite: {}
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - toc:
+      permalink: "#"
+      toc_depth: 3
+  - def_list
+
+extra:
+  repo_url: https://github.com/Mirantis/k0rdent-enterprise-docs
+  docs_repo_name: Mirantis/docs
+  generator: false
+  social:
+    - icon: fontawesome/brands/x-twitter
+      link: https://x.com/k0rdent
+      name: k0rdent on X
+    - icon: fontawesome/brands/bluesky
+      link: https://bsky.app/profile/k0rdent.bsky.social
+      name: k0rdent on BlueSky
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UChXQ6kbvjnAtdZAQpl7Fo4A
+      name: k0rdent on YouTube
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/k0rdent/
+      name: k0rdent on LinkedIn
+  version:
+    provider: mike
+    default: stable
+  analytics:
+#    provider: google
+#    property: #id goes here
+    feedback:
+      title: Was this page helpful?
+      ratings:
+        - icon: material/heart
+          name: This page was helpful
+          data: 1
+          note: >-
+            Thanks for your feedback!
+        - icon: material/heart-broken
+          name: This page could be improved
+          data: 0
+          note: >-
+            Thanks for your feedback! Help us improve this page by
+            using our <a href="https://github.com/Mirantis/k0rdent-enterprise-docs/docs/issues/new" target="_blank" rel="noopener">feedback form</a>.
+  docsVersionInfo:
+    k0rdentName: Mirantis k0rdent Enterprise
+    k0rdentVersion: 1-1-0
+    k0rdentDotVersion: 1.1.0
+    ociRegistry: oci://registry.mirantis.com/k0rdent-enterprise/charts/k0rdent-enterprise
+    k0rdentDigestValue: sha256:3645c61d59e88143e58a7050ca5b2601f5f5810f1eff163ddba74d1477cdc08c
+    k0rdentDigestDate: Wed Aug 13 2025 08:42:36 2025
+    k0rdentTagList: https://github.com/k0rdent/k0rdent-enterprise/tags
+    kofVersions:
+      kofDotVersion: 1.1.0
+    providerVersions:
+      dashVersions:
+        clusterApi: 1-0-4
+        clusterApiProviderAws: 1-0-3
+        clusterApiProviderAzure: 1-0-3
+        clusterApiProviderDocker: 1-0-2
+        clusterApiProviderGcp: 1-0-3
+        clusterApiProviderOpenstack: 1-0-3
+        clusterApiProviderVsphere: 1-0-2
+        clusterApiProviderIpam: 1-0-2
+        clusterApiProviderInfoblox: 1-0-1
+        k0smotron: 1-0-6
+        adoptedCluster: 1-0-1
+        awsEksCluster: 1-0-2
+        awsHostedCpCluster: 1-0-11
+        awsStandaloneCpCluster: 1-0-12
+        azureAksCluster: 1-0-1
+        azureHostedCpCluster: 1-0-13
+        azureStandaloneCpCluster: 1-0-13
+        dockerHostedCpCluster: 1-0-2
+        gcpGkeCluster: 1-0-3
+        gcpHostedCpCluster: 1-0-12
+        gcpStandaloneCpCluster: 1-0-12
+        openstackHostedCpCluster: 1-0-2
+        openstackStandaloneCpCluster: 1-0-11
+        remoteCluster: 1-0-9
+        vsphereHostedCpCluster: 1-0-10
+        vsphereStandaloneCpCluster: 1-0-11
+        sveltosProvider: 0-57-2
+      dotVersions:
+        clusterApi: 1.0.4
+        clusterApiProviderAws: 1.0.3
+        clusterApiProviderAzure: 1.0.3
+        clusterApiProviderDocker: 1.0.2
+        clusterApiProviderGcp: 1.0.3
+        clusterApiProviderOpenstack: 1.0.3
+        clusterApiProviderVsphere: 1.0.2
+        clusterApiProviderIpam: 1.0.2
+        clusterApiProviderInfoblox: 1.0.1
+        k0smotron: 1.0.6
+        adoptedCluster: 1.0.1
+        awsEksCluster: 1.0.2
+        awsHostedCpCluster: 1.0.11
+        awsStandaloneCpCluster: 1.0.12
+        azureAksCluster: 1.0.1
+        azureHostedCpCluster: 1.0.13
+        azureStandaloneCpCluster: 1.0.13
+        dockerHostedCpCluster: 1.0.2
+        gcpGkeCluster: 1.0.3
+        gcpHostedCpCluster: 1.0.12
+        gcpStandaloneCpCluster: 1.0.12
+        openstackHostedCpCluster: 1.0.2
+        openstackStandaloneCpCluster: 1.0.11
+        remoteCluster: 1.0.9
+        vsphereHostedCpCluster: 1.0.10
+        vsphereStandaloneCpCluster: 1.0.11
+        sveltosProvider: 0.57.2
+    servicesVersions:
+      dashVersions:
+        certManager: 1-17-1  
+        externalSecrets: 0-11-0
+        ingressNginx: 4-11-3   
+        kyverno: 3-2-6       
+        velero: 8-1-0   
+      dotVersions:
+        certManager: 1.17.1  
+        externalSecrets: 0.11.0
+        ingressNginx: 4.11.3   
+        kyverno: 3.2.6       
+        velero: 8.1.0  
+    addonVersions:
+      digests:
+        k0rdentUI: sha256:60ab7a9dafff9dc143a1d5d697052408f3cf8b27f53c460700d09668a5eb2c71
+        k0rdentUIDate: Sat Jul 26 14:28:03 2025
+      dashVersions:
+        ceph: 1-0-3
+        dex: 0-19-1
+        hco: 1-15-1-mira  
+        stacklightOperator: 0-1-0
+        stacklightChart: 0-1-0-mcp-16
+        clusterApiProviderCapm3: 0-2-0
+        capm3StandaloneCpCluster: 0-2-0
+        k0rdentUI: 1-0-0-rc7
+      dotVersions:
+        ceph: 1.0.3
+        dex: 0.19.1
+        hco: 1.15.1-mira    
+        stacklightOperator: 0.1.0  
+        stacklightChart: 0.1.0-mcp-16
+        clusterApiProviderCapm3: 0.2.0
+        capm3StandaloneCpCluster: 0.2.0
+        k0rdentUI: 1.0.0-rc7
+
