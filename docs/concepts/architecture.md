@@ -62,6 +62,8 @@ Typically, user services are user-defined applications that run within the MKE
 
 ## Architecture Diagram
 
+![MKE 4k Architecture]({{{ base_url }}}/assets/mke4-architecture.drawio.svg)
+
 <img src="/mke-docs/images/mke4-architecture.drawio.svg" id="myBtn"></img>
 
 <div id="myModal" class="modal">
