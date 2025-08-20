@@ -118,17 +118,17 @@ extra:
   base_url: ""
   social:
     - icon: fontawesome/brands/x-twitter
-      link: https://x.com/k0rdent
-      name: k0rdent on X
-    - icon: fontawesome/brands/bluesky
-      link: https://bsky.app/profile/k0rdent.bsky.social
-      name: k0rdent on BlueSky
+      link: https://twitter.com/MirantisIT
+      name: Mirantis on X
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/channel/UChXQ6kbvjnAtdZAQpl7Fo4A
-      name: k0rdent on YouTube
+      link: https://www.youtube.com/user/mirantisus
+      name: Mirantis on YouTube
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/k0rdent/
-      name: k0rdent on LinkedIn
+      link: https://www.linkedin.com/company/mirantis
+      name: Mirantis on LinkedIn
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/MirantisUS
+      name: Mirantis on Facebook
   version:
     provider: mike
     default: stable
