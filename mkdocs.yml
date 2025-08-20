@@ -8,8 +8,7 @@ repo_url: https://github.com/jjainschigg-r/new-mke-docs
 edit_uri: https://github.com/jjainschigg-r/new-mke-docs/edit/main/docs/
 
 copyright:
-  Copyright &copy; 2025 Mirantis | Documentation distributed under <a href="https://creativecommons.org/licenses/by/4.0/legalcode.txt">CC-BY-4.0</a>.
-  -- <a href="#__consent">Change cookie settings</a>
+  Copyright &copy; 2025 Mirantis Inc. - All rights reserved. -- <a href="#__consent">Change cookie settings</a>
 
 theme:
   name: "material"
