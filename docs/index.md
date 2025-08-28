@@ -1,7 +1,4 @@
----
-title: MKE 4k Documentation
-weight: 2
----
+## MKE 4 Bingular
 
 The Mirantis Kubernetes Engine 4k documentation set is provided to help system
 administrators and DevOps professionals to configure, install, and operate MKE
