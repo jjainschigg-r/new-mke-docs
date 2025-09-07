@@ -1,7 +1,4 @@
----
-title: kube-scheduler
-weight: 5
----
+# kube-scheduler
 
 The Kubernetes scheduler is a control plane process that assigns pods to nodes.
 It first determines which nodes are valid placements for each pod in the
@@ -21,7 +18,6 @@ spec:
     profilingEnabled: true
     bindToAll: true
 ```
-
 You can further configure Kubernetes Scheduler using the `extraArgs` field to
 define flags. This field accepts a list of key-value pairs, which are passed
 directly to the kube-scheduler process at runtime.

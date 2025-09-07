@@ -1,16 +1,9 @@
----
-weight: 3
----
-
 # k0rdent templates
 
-{{< callout type="info" >}}
+!!! info
+    [k0rdent](https://k0rdent.io) is a Mirantis-initiated open source project with which platform engineers can build, automate, and manage Kubernetes platforms at scale. MKE 4k is adopting k0rdent technology to enable installation and management of services and components in a template-driven manner. k0rdent is available in MKE 4k as a technical preview only.
 
-[k0rdent](https://k0rdent.io) is a Mirantis-initiated open source project with which platform engineers can build, automate, and manage Kubernetes platforms at scale. MKE 4k is adopting k0rdent technology to enable installation and management of services and components in a template-driven manner. k0rdent is available in MKE 4k as a technical preview only.
-
-For more information on MKE 4k and k0rdent, [contact Mirantis Sales]([mirantis.com/contact).
-
-{{< /callout >}}
+    For more information on MKE 4k and k0rdent, [contact Mirantis Sales]([mirantis.com/contact).
 
 k0rdent templates are re-usable text definitions of components that you can use
 to install services. These templates provide a declarative way

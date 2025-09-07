@@ -1,7 +1,4 @@
----
-title: kube-controller-manager
-weight: 4
----
+# kube-controller-manager
 
 The Kubernetes controller manager is a daemon that embeds the core control
 loops that ship with Kubernetes. In Kubernetes, a controller is a control loop
@@ -19,7 +16,6 @@ spec:
   controllerManager:
     terminatedPodGCThreshold: 12500
 ```
-
 You can further configure Kubernetes controller manager using the `extraArgs`
 field to define flags. This field accepts a list of key-value pairs, which are
 passed directly to the kube-controller-manager process at runtime.

@@ -1,7 +1,4 @@
----
-title: Limitations
-weight: 2
----
+# Limitations
 
 It is important to be familiar with the MKE 4k limitations related to Container
 Network Interfaces before deploying a CNI plugin.

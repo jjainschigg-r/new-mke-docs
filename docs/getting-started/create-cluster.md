@@ -1,13 +1,7 @@
----
-title: Create a cluster
-weight: 3
----
+# Create a cluster
 
-{{< callout type="info" >}}
-
-For information on how to create a cluster in an airgapped environment, refer to [Offline installation](../offline-installation).
-
-{{< /callout >}}
+!!! info
+    For information on how to create a cluster in an airgapped environment, refer to [Offline installation](../offline-installation).
 
 ## Install dependecies
 
@@ -32,10 +26,9 @@ process and ensures consistency in cluster deployments.
 
 1. Generate the YAML file for your installation:
 
-   ```shell
-   mkectl init > mke4.yaml
+   ```bash
+mkectl init > mke4.yaml
    ```
-
 2. In the generated configuration file:
 
    - Edit the `hosts` section to match your roster of nodes. Provide the SSH
@@ -53,44 +46,44 @@ process and ensures consistency in cluster deployments.
      The external address is the domain name of the load balancer configured
      as described in [System Requirements: Load balancer](../system-requirements#load-balancer-requirements).
 
-{{< callout type="important" >}}
-You may need to add the SSH private key to your identity manager in order for mkectl to connect to it.
-- With ssh-agent:
-  ```
-  ssh-add <path_to_your_SSH_private_key>
-  ```
-- Without ssh-agent, ensure that the SSH private key is accessible at the path specified in the keyPath field of the mke4.yaml configuration file.
-{{< /callout >}}
+!!! important
+    You may need to add the SSH private key to your identity manager in order for mkectl to connect to it.
+    - With ssh-agent:
+      ```text
+ssh-add <path_to_your_SSH_private_key>
+      ```    - Without ssh-agent, ensure that the SSH private key is accessible at the path specified in the keyPath field of the mke4.yaml configuration file.
 
 ## Create a cluster
 
-{{< callout type="warning" >}}
+!!! warning
+    Before you create a new MKE 4k cluster you must first verify that a cluster does
+    not already exist in the system. If you attempt to create a cluster where a
+    cluster is already present, even through the use of a different configuration
+    file, you will lose the ability to use `mkectl` to access the original cluster.
 
-Before you create a new MKE 4k cluster you must first verify that a cluster does
-not already exist in the system. If you attempt to create a cluster where a
-cluster is already present, even through the use of a different configuration
-file, you will lose the ability to use `mkectl` to access the original cluster.
-
-For information on how to delete a cluster, refer to [Uninstall a
-cluster](../uninstall-cluster).
-
-{{< /callout >}}
+    For information on how to delete a cluster, refer to [Uninstall a
+    cluster](../uninstall-cluster).
 
 To create a new cluster, run the `mkectl apply` command with the generated YAML
 configuration file:
 
-```shell
+```bash
 mkectl apply -f mke4.yaml
 ```
-
-{{< callout type="info" >}}
-
-The `mkectl apply` command configures the `mke` context in the default
-kubeconfig file located at `~/.kube/config`. If the default kubeconfig is
-changed, and the `mke` context becomes invalid or unavailable, `mkectl` will
-not be able to manage the cluster until the kubeconfig is restored.
-
-{{< /callout >}}
+!!! info
+    The `mkectl apply` command configures the `mke` context in the default
+    kubeconfig file located at `~/.kube/config`. If the default kubeconfig is
+    changed, and the `mke` context becomes invalid or unavailable, `mkectl` will
+    not be able to manage the cluster until the kubeconfig is restored.
 
 Once the new cluster is viable, you can start interacting with it using
 `kubectl` with the `mke` context.
+
+!!! warning
+    Always deploy an odd number of managers.
+
+    MKE 4k embeds an etcd cluster across manager (controller) nodes, and with two
+    managers any single failure will break quorum. Refer to the
+    the etcd FAQ, [Why an odd number of cluster
+    members?](https://etcd.io/docs/v3.5/faq/#why-an-odd-number-of-cluster-member),
+    for more information.

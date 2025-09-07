@@ -1,7 +1,4 @@
----
-title: OPA Gatekeeper
-weight: 2
----
+# OPA Gatekeeper
 
 MKE 4k supports the use of OPA Gatekeeper for purposes of policy control.
 
@@ -38,7 +35,6 @@ spec:
       - <Namespace1>
       - <Namespace2>
 ```
-
 The `exemptNamespaces` field lists the namespaces that are exempt from policy
 enforcement. The following namespaces are added by default, and thus cannot be
 removed:
@@ -70,7 +66,6 @@ To check if the OPA Gatekeeper pods have entered the `Running` state, run:
 ```bash
 kubectl get pod -n mke
 ```
-
 Example output:
 
 ```bash
@@ -81,26 +76,22 @@ gatekeeper-controller-manager-79c4f4bfc7-n66mj   1/1     Running   0            
 gatekeeper-controller-manager-79c4f4bfc7-v8lx7   1/1     Running   0             61s
 ...
 ```
-
 To create constraint templates and constraints from the open source [Gatekeeper library](https://github.com/open-policy-agent/gatekeeper-library), run:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/template.yaml
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/constraint.yaml
 ```
-
 To create pods that are disallowed by the newly created policies, run:
 
 ```bash
 kubectl apply -f https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/example_disallowed.yaml
 ```
-
 Example output:
 
 ```bash
 Error from server (Forbidden): error when creating "https://raw.githubusercontent.com/open-policy-agent/gatekeeper-library/master/library/pod-security-policy/allow-privilege-escalation/samples/psp-allow-privilege-escalation-container/example_disallowed.yaml": admission webhook "validation.gatekeeper.sh" denied the request: [psp-allow-privilege-escalation-container] Privilege escalation container is not allowed: nginx
 ```
-
 ## MKE version comparison
 
 | MKE 3                                                              | MKE 4k                                           |

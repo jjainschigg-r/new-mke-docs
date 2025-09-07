@@ -1,7 +1,4 @@
----
-title: Architecture
-weight: 1
----
+# Architecture
 
 Mirantis Kubernetes Engine (MKE) 4k is an enterprise-grade, production-ready
 Kubernetes platform that is designed to be secure, scalable, and reliable.
@@ -62,18 +59,16 @@ Typically, user services are user-defined applications that run within the MKE
 
 ## Architecture Diagram
 
-![MKE 4k Architecture]({{{ base_url }}}/assets/mke4-architecture.drawio.svg)
+![Alt text]({{{ 'img/mke4-architecture.drawio.svg' | url }}})
 
-<img src="/mke-docs/images/mke4-architecture.drawio.svg" id="myBtn"></img>
 
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img src="/mke-docs/images/mke4-architecture.drawio.svg">
-  </div>
-</div>
+  
+    &times;
+    ![Alt text]({{{ 'img/mke4-architecture.drawio.svg' | url }}})
+  
 
-<script>
+
+
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
@@ -83,7 +78,7 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on  (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
@@ -94,9 +89,9 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
 
-<style>
+
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -134,4 +129,3 @@ window.onclick = function(event) {
   text-decoration: none;
   cursor: pointer;
 }
-</style>

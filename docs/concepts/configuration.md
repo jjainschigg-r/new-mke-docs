@@ -1,7 +1,4 @@
----
-title: Configuration
-weight: 2
----
+# Configuration
 
 The Mirantis Kubernetes Engine (MKE) 4k configuration file contains an
 opinionated configuration on how to set up an MKE 4k cluster.
@@ -21,36 +18,34 @@ how to set up the cluster.
 
 1. Generate the default `mke4.yaml` configuration file by running:
 
-    ```commandline
+```bash
     mkectl init > mke4.yaml
-    ```
-
+```
 2. Modify the `hosts` section of the `mke4.yaml` configuration file, to apply
    the configuration to a set of pre-existing machines that you have set up in
    advance:
 
     ```yaml
-    hosts:
-    - ssh:
-        address: 18.224.23.158
-        keyPath: "/absolute/path/to/private/key.pem"
-        port: 22
-        user: root
-      role: controller+worker
-    - ssh:
-        address: 18.224.23.158
-        keyPath: "/absolute/path/to/private/key.pem"
-        port: 22
-        user: ubuntu
-      role: worker
-    - ssh:
-        address: 18.117.87.45
-        keyPath: "/absolute/path/to/private/key.pem"
-        port: 22
-        user: ubuntu
-      role: worker
+hosts:
+- ssh:
+    address: 18.224.23.158
+    keyPath: "/absolute/path/to/private/key.pem"
+    port: 22
+    user: root
+  role: controller+worker
+- ssh:
+    address: 18.224.23.158
+    keyPath: "/absolute/path/to/private/key.pem"
+    port: 22
+    user: ubuntu
+  role: worker
+- ssh:
+    address: 18.117.87.45
+    keyPath: "/absolute/path/to/private/key.pem"
+    port: 22
+    user: ubuntu
+  role: worker
     ```
-
 ## Choose services
 
 A core component of MKE 4k is a default set of curated and tested services that
@@ -61,4 +56,3 @@ Using the `mke4.yaml` configuration file, you can enable and disable a number
 of the available MKE 4k services, as well as modify the settings of those
 services.
 
-<!-- Discuss with SME NNeisen moving "Create configuration" to "Getting Started" -->

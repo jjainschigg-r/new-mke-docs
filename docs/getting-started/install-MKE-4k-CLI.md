@@ -1,7 +1,4 @@
----
-title: Install the MKE 4k CLI
-weight: 2
----
+# Install the MKE 4k CLI
 
 Before you can proceed with the MKE 4k installation, you must download and
 install `mkectl`. You can do this automatically using an `install.sh` script,
@@ -11,43 +8,35 @@ or you can do it manually.
 
 1. Install `mkectl` by downloading and executing the following shell script:
 
-   ```shell
-   sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
+   ```bash
+sudo /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
    ```
-
    If you want to override default dependency versions, pass the
    `MKECTL_VERSION` as required. For example:
 
-   ```shell
-   sudo MKECTL_VERSION=v4.1.0 /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
+   ```bash
+sudo MKECTL_VERSION=v4.1.0 /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
    ```
-
    If you prefer to run the script in the debug mode for more detailed output and logging,
    set `DEBUG=true`:
 
-   ```shell
-   sudo DEBUG=true /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
+   ```bash
+sudo DEBUG=true /bin/sh -c "$(curl -fsSL https://raw.githubusercontent.com/MirantisContainers/mke-release/refs/heads/main/install.sh)"
    ```
-
 2. Confirm the installation:
 
-   ```shell
-   mkectl version
+   ```bash
+mkectl version
    ```
-
    Expected output:
 
-   ```shell
-   Version: v4.1.0
+   ```bash
+Version: v4.1.0
    ```
+   
 
-   <!-- Remember to update the dependency version and to keep them in sync with the version cited in the Install Manually section below. -->
-
-   {{< callout type="info" >}}
-
-   By default, the script installs mkectl v4.1.0.
-
-   {{< /callout >}}
+!!! info
+    By default, the script installs mkectl v4.1.0.
 
 The `install.sh` script detects the operating system and the
 underlying architecture, based on which it will install the `mkectl` binary in `/usr/local/bin`. Thus, you must ensure that
@@ -59,34 +48,27 @@ You can now proceed with MKE 4k cluster creation.
 
 1. Add the `mirantis` repository to your local taps:
 
-   ```shell
-   brew tap mirantis/tap
+   ```bash
+brew tap mirantis/tap
    ```
+!!! info
+    If the `mirantis` tap is already present and you want to update it, run:
 
-   {{< callout type="info" >}}
-
-   If the `mirantis` tap is already present and you want to update it, run:
-
-   ```shell
-   brew update
-   ```
-
-   {{< /callout >}}
-
+       ```bash
+brew update
+       ```
 2. Install `mkectl`:
 
    - To install the latest `mkectl` version:
 
-     ```shell
-     brew install mkectl
+     ```bash
+brew install mkectl
      ```
-
    - To install a specific `mkectl` version:
 
-     ```shell
-     brew install mkectl@<version-number>
+     ```bash
+brew install mkectl@<version-number>
      ```
-
 ## Install manually
 
 1. Download the `mkectl` binary from the S3 bucket:
@@ -98,12 +80,11 @@ You can now proceed with MKE 4k cluster creation.
 
 2. Ensure that the `mkectl` binary is executable:
 
+   ```bash
+chmod +x mkectl
    ```
-   chmod +x mkectl
-   ```
-
 3. Copy the `mkectl` binary to `/usr/local/bin/`:
 
-   ```
-   mv mkectl /usr/local/bin/
+   ```bash
+mv mkectl /usr/local/bin/
    ```

@@ -1,7 +1,4 @@
----
-title: System requirements
-weight: 1
----
+# System requirements
 
 Before you start cluster deployment, verify that your system meets the following minimum hardware
 and software requirements.
@@ -40,9 +37,9 @@ to each controller through the following ports:
 
 | Listen port | Target port | Purpose             | Configurable         |
 | ----------- | ----------- | ------------------- | -------------------- |
-| 6443        | 6443        | Kubernetes API      | {{< icon "ban" >}}   |
-| 9443        | 9443        | Controller join API | {{< icon "ban" >}}   |
-| 443         | 33001       | Ingress Controller  | {{< icon "check" >}} |
+| 6443        | 6443        | Kubernetes API      | {{}}   |
+| 9443        | 9443        | Controller join API | {{}}   |
+| 443         | 33001       | Ingress Controller  | {{}} |
 
 You can configure the listen port of the Ingress Controller to be different from
 the default port `443`. However, if you change the listen port, you must append
@@ -54,7 +51,6 @@ should look as follows:
 apiServer:
   externalAddress: "mke.example.com:33001"
 ```
-
 The target port must match the HTTPS node port of the Ingress Controller,
 which is `33001` by default, but can be adjusted as needed. See the configuration
 details for `nodePorts` in the 

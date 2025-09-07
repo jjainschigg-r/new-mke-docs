@@ -1,16 +1,11 @@
----
-title: Configure CNI Providers
-weight: 4
----
-
 Information is provided herein on how to configure the Container Network
 Interfaces that MKE 4k supports.
 
 # Calico OSS
-<br>
-<details>
 
-<summary><b>Calico CNI configuration parameters</b></summary>
+
+
+Calico CNI configuration parameters
 
 The following table includes details on the configurable settings
 for the Calico provider.
@@ -18,11 +13,11 @@ for the Calico provider.
 | Field   | Description  | Values        |  Default     |
 |---------|--------------|---------------|--------------|
 | `enabled` | Sets the name of the external storage provider. AWS is currently the only available option. | `true` | `true` |
-| `cidrV4` | Sets the IP pool in the Kubernetes cluster from which Pods are allocated. | Valid IPv4 CIDR | `192.168.0.0/16` <br><br>You can easily modify `cidrV4` prior to cluster deployment. Contact Mirantis Support, however, if you need to modify `clusterCIDRIPv4` once your cluster has been deployed.|
+| `cidrV4` | Sets the IP pool in the Kubernetes cluster from which Pods are allocated. | Valid IPv4 CIDR | `192.168.0.0/16` You can easily modify `cidrV4` prior to cluster deployment. Contact Mirantis Support, however, if you need to modify `clusterCIDRIPv4` once your cluster has been deployed.|
 | `linuxDataplane` | Sets the dataplane for Calico CNI. | Iptables | Iptables|
 | `loglevel` | Sets the log level for the CNI components. | Info, Debug | Info|
 
-</details>
+
 
 The default network configuration described herein offers a serviceable, low maintenance solution. If, however, you want more control over your network configuration environment, MKE 4k exposes maximal configuration for the Calico CNI through which you can configure your networking to the fullest extent allowed by the provider. For this, you will use the `values.yaml` key, in which case an example networking would resemble the following:
 
@@ -84,24 +79,19 @@ The default network configuration described herein offers a serviceable, low mai
         v: "5"
       provider: kuberouter
 ```
+!!! important
+    - You must choose whether to specify an exact YAML specification for the Helm installation of Tigera Operator during the initial cluster installation.
+    - The supplied YAML for `values.yaml` must include the exact first line `kubeletVolumePluginPath: `, otherwise the MKE 4k installation will fail.
 
-{{< callout type="important" >}}
+!!! info
+    Refer to the official Tigera Operator documentation
+    for:
 
-- You must choose whether to specify an exact YAML specification for the Helm installation of Tigera Operator during the initial cluster installation.
-- The supplied YAML for `values.yaml` must include the exact first line `kubeletVolumePluginPath: <mke4.yaml kubelet.kubeletRootDir setting>`, otherwise the MKE 4k installation will fail.
+    - [Information on how to prepare the required content for the `values.yaml` specification](https://docs.tigera.io/calico/latest/getting-started/kubernetes/windows-calico/operator)
+    - The [`values.yaml` information content](https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.Installation)
+    - The [`defaultFelixConfiguration` content for the `values.yaml` specification(https://docs.tigera.io/calico/latest/reference/resources/felixconfig)
 
-{{< /callout >}}
-
-{{< callout type="info" >}} Refer to the official Tigera Operator documentation
-for:
-
-- [Information on how to prepare the required content for the `values.yaml` specification](https://docs.tigera.io/calico/latest/getting-started/kubernetes/windows-calico/operator)
-- The [`values.yaml` information content](https://docs.tigera.io/calico/latest/reference/installation/api#operator.tigera.io/v1.Installation)
-- The [`defaultFelixConfiguration` content for the `values.yaml` specification(https://docs.tigera.io/calico/latest/reference/resources/felixconfig)
-
-You can view the full `values.yaml` specification for the Helm chart needed to install Tigera Operator at the [Project Calico GitHub](https://github.com/projectcalico/calico/blob/master/charts/tigera-operator/values.yaml).
-
-{{< /callout >}}
+    You can view the full `values.yaml` specification for the Helm chart needed to install Tigera Operator at the [Project Calico GitHub](https://github.com/projectcalico/calico/blob/master/charts/tigera-operator/values.yaml).
 
 The network configuration generated as a result of upgrading to MKE 4k from an existing MKE 3 cluster always uses YAML. As such clusters have at least one existing IP pool, however, the CIDR and dataplane values are specified outside of the YAML, as illustrated below:
 
@@ -166,12 +156,11 @@ The network configuration generated as a result of upgrading to MKE 4k from an e
     - enabled: false
       provider: custom
 ```
+!!! info
+    - MKE 4k uses a static port range for Kubernetes NodePorts, from  `32768` to `35535`. 
+    - Following a successful MKE 3 to MKE 4k upgrade, a list displays that details the ports that no longer need to be opened on manager or worker nodes. These ports can be blocked.
 
-{{< callout type="info" >}}
-- MKE 4k uses a static port range for Kubernetes NodePorts, from  `32768` to `35535`. 
-- Following a successful MKE 3 to MKE 4k upgrade, a list displays that details the ports that no longer need to be opened on manager or worker nodes. These ports can be blocked.
-{{< /callout >}}
-
-{{< callout type="tip" >}} Refer to [kubelet custom
-profiles](../../../configuration/kubernetes/kubelet/#kubelet-root-directory)
-for information on the `kubelet.kubeletRootDir` setting. {{< /callout >}}
+!!! tip
+    Refer to [kubelet custom
+    profiles](../../../configuration/kubernetes/kubelet/#kubelet-root-directory)
+    for information on the `kubelet.kubeletRootDir` setting.

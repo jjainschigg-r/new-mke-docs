@@ -1,7 +1,3 @@
----
-weight: 2
----
-
 # Getting started
 
 To help you set up and begin using MKE 4k quickly and effectively, Mirantis
@@ -25,13 +21,13 @@ and automate workflows.
 
 ### Obtain and apply an MKE 4k License
 
-You must [have a valid license to lawfully run MKE 4k](licensing-mke4k).
+You must [have a valid license to lawfully run MKE 4k](licensing-mke4).
 
-{{< callout type="info" >}} Mirantis recommends that you set the license in the
-MKE 4k configuration file prior to the creation of your MKE 4k cluster. You can, however, [apply the
-license following cluster creation using the MKE 4k web
-UI](licensing-mke4k/apply-mke4k-license-post-installation).
-{{< /callout >}}
+!!! info
+    Mirantis recommends that you set the license in the
+    MKE 4k configuration file prior to the creation of your MKE 4k cluster. You can, however, [apply the
+    license following cluster creation using the MKE 4k web
+    UI](licensing-mke4/apply-mke4k-license-post-installation).
 
 ### Create a cluster
 
@@ -55,10 +51,7 @@ nodes](add-and-remove-cluster-nodes), [how to obtain the current MKE 4k
 configuration file](get-current-mke-config), and [how to uninstall a
 cluster](uninstall-cluster).
 
-{{< callout type="info" >}}
-
-For detail and set up information for the various MKE 4k features, refer to
-the [Configuration](../configuration) documentation, as well as
-the topics offered in [Tutorials](../tutorials).
-
-{{< /callout >}}
+!!! info
+    For detail and set up information for the various MKE 4k features, refer to
+    the [Configuration](../configuration) documentation, as well as
+    the topics offered in [Tutorials](../tutorials).

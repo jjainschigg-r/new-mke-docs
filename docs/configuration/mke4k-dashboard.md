@@ -1,21 +1,18 @@
----
-title: MKE 4k Dashboard
-weight: 6
----
+# MKE 4k Dashboard
 
 The MKE 4k Dashboard add-on provides a web UI that you can use to manage
 Kubernetes resources:
 
-<img src="/mke-docs/images/ui-preview.png" id="myBtn"></img>
+![Alt text]({{{ 'img/ui-preview.png' | url }}})
 
-<div id="myModal" class="modal">
-  <div class="modal-content">
-    <span class="close">&times;</span>
-    <img src="/mke-docs/images/ui-preview.png">
-  </div>
-</div>
 
-<script>
+  
+    &times;
+    ![Alt text]({{{ 'img/ui-preview.png' | url }}})
+  
+
+
+
 var modal = document.getElementById("myModal");
 var btn = document.getElementById("myBtn");
 var span = document.getElementsByClassName("close")[0];
@@ -25,7 +22,7 @@ btn.onclick = function() {
   modal.style.display = "block";
 }
 
-// When the user clicks on <span> (x), close the modal
+// When the user clicks on  (x), close the modal
 span.onclick = function() {
   modal.style.display = "none";
 }
@@ -36,9 +33,9 @@ window.onclick = function(event) {
     modal.style.display = "none";
   }
 }
-</script>
 
-<style>
+
+
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
@@ -76,9 +73,8 @@ window.onclick = function(event) {
   text-decoration: none;
   cursor: pointer;
 }
-</style>
+
 
 To access the MKE 4k Dashboard, which is enabled by default, navigate to the
 address of the load balancer endpoint from a freshly installed cluster. Refer
 to [Load balancer requirements](../../getting-started/system-requirements#load-balancer-requirements) for detailed information.
-

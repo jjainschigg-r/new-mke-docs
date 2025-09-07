@@ -1,7 +1,4 @@
----
-title: CNI Configuration Example
-weight: 1
----
+# CNI Configuration Example
 
 The `network` section of the `mke4.yaml` configuration file renders as follows:
 
@@ -45,4 +42,3 @@ network:
       provider: kuberouter
     serviceCIDR: 10.96.0.0/16
 ```
-

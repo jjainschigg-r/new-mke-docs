@@ -69,23 +69,126 @@ plugins:
       redirect_maps:
  
 nav:
-  - Welcome to the MKE 4k docs: index.md
+  - MKE 4k Documentation: index.md
   - Concepts:
-    - MKE 4k architecture: concepts/architecture.md
+    - Concepts: concepts/index.md
+    - Architecture: concepts/architecture.md
     - Configuration: concepts/configuration.md
+    - Container Network Interfaces: concepts/cni.md
     - k0rdent templates: concepts/k0rdent-templates.md
-    - Container Network Interfaces (CNIs): concepts/cni.md
-  - Getting Started:
-    - Overview: getting-started/index.md
-    - System requirements: getting-started/system-requirements.md 
-    - Install MKE 4k CLI: getting-started/install-MKE-4k-CLI.md
-    - Create a cluster: getting-started/create-cluster.md 
-    - Offline installation: getting-started/offline-installation.md 
+  - Configuration:
+    - Configuration: configuration/index.md
+    - Authentication:
+      - Authentication: configuration/authentication/index.md
+      - Basic authentication: configuration/authentication/basic-authentication.md
+      - LDAP: configuration/authentication/LDAP.md
+      - OIDC: configuration/authentication/OIDC.md
+      - SAML: configuration/authentication/SAML.md
+    - Backup and restore:
+      - Backup and restore: configuration/backup-restore/index.md
+      - Back up etcd: configuration/backup-restore/backup-etcd.md
+      - External: configuration/backup-restore/external.md
+      - In Cluster: configuration/backup-restore/in-cluster.md
+    - Cloud providers:
+      - Cloud providers: configuration/cloudproviders/index.md
+    - Container Network Interfaces:
+      - Container Network Interfaces: configuration/container-network-interface/index.md
+      - Unmanaged CNI Providers:
+        - Unmanaged CNI Providers: configuration/container-network-interface/unmanaged-cni-providers/index.md
+        - Configure time windows for network bootstrapping: configuration/container-network-interface/unmanaged-cni-providers/configure-time-windows-bootstrapping.md
+        - Considerations and Best Practices: configuration/container-network-interface/unmanaged-cni-providers/considerations-best-practices.md
+        - Install an unmanaged CNI plugin: configuration/container-network-interface/unmanaged-cni-providers/install-unmanaged-cni.md
+        - Limitations: configuration/container-network-interface/unmanaged-cni-providers/limitations-unmanaged-cni.md
+        - Network policies: configuration/container-network-interface/unmanaged-cni-providers/network-policies.md
+        - Prerequisites for unmanaged CNI on MKE 4k: configuration/container-network-interface/unmanaged-cni-providers/prerequisites-unmanaged-cni.md
+        - Verify CNI plugin installation: configuration/container-network-interface/unmanaged-cni-providers/verify-installation.md
+      - Calico OSS: configuration/container-network-interface/configure-cni-providers.md
+      - CNI Configuration Example: configuration/container-network-interface/cni-configuration-example.md
+      - Enable CNI Providers: configuration/container-network-interface/enable-cni-providers.md
+      - Limitations: configuration/container-network-interface/cni-limitations.md
+      - Network Configuration: configuration/container-network-interface/network-configuration.md
+    - Ingress controller:
+      - Ingress controller: configuration/ingress/index.md
+      - TCP and UDP services: configuration/ingress/tcp-udp-services.md
+    - Kubernetes components:
+      - Kubernetes components: configuration/kubernetes/index.md
+      - Audit logging: configuration/kubernetes/audit-logging.md
+      - etcd: configuration/kubernetes/etcd.md
+      - kube-apiserver: configuration/kubernetes/kube-apiserver.md
+      - kube-controller-manager: configuration/kubernetes/kube-controller-manager.md
+      - kube-scheduler: configuration/kubernetes/kube-scheduler.md
+      - kubelet: configuration/kubernetes/kubelet.md
+    - MetalLB load balancer:
+      - MetalLB load balancer: configuration/metallb/index.md
+    - Node Feature Discovery (NFD):
+      - Node Feature Discovery (NFD): configuration/node-feature-discovery/index.md
+    - Policy Controller:
+      - Policy Controller: configuration/policycontroller/index.md
+      - OPA Gatekeeper: configuration/policycontroller/opagatekeeper.md
+    - Add services: configuration/add-services.md
+    - Configuration Drift Detection: configuration/configuration-drift-detection.md
+    - CoreDNS Lameduck: configuration/coredns-lameduck.md
+    - MKE 4k Dashboard: configuration/mke4k-dashboard.md
+    - Monitoring: configuration/monitoring.md
+    - Multus: configuration/multus.md
+    - NVIDIA GPU Workloads: configuration/nvidia-gpu.md
+    - Support Bundle: configuration/support-bundle.md
+    - Telemetry: configuration/telemetry.md
+    - TLS certificates: configuration/tlscertificates.md
+    - Workload node deployment: configuration/workload-node-deployment.md
+  - Downloads:
+    - Oss Licenses:
+  - Getting started:
+    - Getting started: getting-started/index.md
     - Licensing MKE 4k:
-      - Overview: getting-started/licensing-mke4k/index.md
-      - Obtain your MKE 4k license: getting-started/licensing-mke4k/obtain-mke4k-license.md 
-      - Set license in configuration: getting-started/licensing-mke4k/set-license-in-configuration.md 
-      - Apply license after installation: getting-started/licensing-mke4k/apply-mke4k-license-post-installation.md 
+      - Licensing MKE 4k: getting-started/licensing-mke4/index.md
+      - Apply an MKE 4k license following installation: getting-started/licensing-mke4/apply-mke4k-license-post-installation.md
+      - Obtain your MKE 4k license: getting-started/licensing-mke4/obtain-mke4k-license.md
+      - Set your license in the configuration: getting-started/licensing-mke4/set-license-in-configuration.md
+    - Access and manage the cluster with kubectl: getting-started/access-manage-cluster-kubectl.md
+    - Add and remove cluster nodes: getting-started/add-and-remove-cluster-nodes.md
+    - Create a cluster: getting-started/create-cluster.md
+    - Install the MKE 4k CLI: getting-started/install-MKE-4k-CLI.md
+    - Login to the registry: getting-started/offline-installation.md
+    - Obtain the current MKE 4k configuration file: getting-started/get-current-mke-config.md
+    - Start interacting with the cluster: getting-started/start-interacting-with-cluster.md
+    - System requirements: getting-started/system-requirements.md
+    - Uninstall a cluster: getting-started/uninstall-cluster.md
+  - Release notes:
+    - Release notes: release-notes/index.md
+    - 4.1.0:
+      - 4.1.0: release-notes/4.1.0/index.md
+      - Addressed issues: release-notes/4.1.0/addressed-issues.md
+      - Enhancements: release-notes/4.1.0/enhancements.md
+      - Known issues: release-notes/4.1.0/known-issues.md
+      - Middleware component versions: release-notes/4.1.0/major-component-versions.md
+    - Features Summary: release-notes/features-summary.md
+  - Tutorials:
+    - Tutorials: tutorials/index.md
+    - Authentication Provider Setup:
+      - "dn: dc=example,dc=org": tutorials/authentication-provider-setup/setting-up-openldap-as-an-ldap-provider.md
+      - Setting up Okta as a SAML provider: tutorials/authentication-provider-setup/setting-up-okta-as-a-saml-provider.md
+      - Setting up Okta as an OIDC provider: tutorials/authentication-provider-setup/setting-up-okta-as-an-oidc-provider.md
+    - Mke4K In Aws:
+      - Terraform:
+        - Lb Targets:
+      - Create a Kubernetes cluster in AWS using Terraform and install MKE 4k: tutorials/mke4k-in-aws/terraform-scenario.md
+    - Mke4K Single Node:
+      - Mke4K Single Node Scenario: tutorials/mke4k-single-node/mke4k-single-node-scenario.md
+  - Upgrade from MKE 3.7 or 3.8:
+    - Upgrade from MKE 3.7 or 3.8: upgrade-from-MKE-3x/index.md
+    - CoreDNS Lameduck Upgrades: upgrade-from-MKE-3x/coredns-lameduck-upgrades.md
+    - Perform the Upgrade: upgrade-from-MKE-3x/perform-migration.md
+    - RBAC Upgrades: upgrade-from-MKE-3x/rbac-upgrades.md
+    - Revert the Upgrade: upgrade-from-MKE-3x/revert-upgrade.md
+    - Troubleshoot the Upgrade: upgrade-from-MKE-3x/troubleshoot-upgrade.md
+    - Upgrade Considerations: upgrade-from-MKE-3x/upgrade-considerations.md
+    - Upgrade Prerequisites: upgrade-from-MKE-3x/upgrade-prerequisites.md
+    - Upgrade the Configuration: upgrade-from-MKE-3x/migrate-configuration.md
+    - Upgrade Verification and Access: upgrade-from-MKE-3x/upgrade-verification-access.md
+    - Upgrade with cert-manager: upgrade-from-MKE-3x/upgrade-cert-manager.md
+    - Upgrade with unmanaged CNI: upgrade-from-MKE-3x/upgrade-unmanaged-cni.md
+  - Open Source Components and Licenses: oss-download.md
   - Support, Services, Contact:
     - Overview: support/index.md
     - Get support: https://www.mirantis.com/support/enterprise-support-services/

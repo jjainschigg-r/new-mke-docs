@@ -1,7 +1,4 @@
----
-title: LDAP
-weight: 3
----
+# LDAP
 
 You can configure LDAP (Lightweight Directory Access Protocol) for MKE 4k
 through the `authentication.ldap` section of the `mke4.yaml` configuration
@@ -26,7 +23,6 @@ authentication:
       emailAttr: mail
       nameAttr: cn
 ```
-
 ## Configure LDAP service for MKE
 
 In the `mke4.yaml` configuration file `authentication.ldap` section, enable your
@@ -34,9 +30,8 @@ LDAP service by setting `enabled` to `true`. Use the remaining fields, which
 are defined in the following table, to configure
 the interactions with your LDAP server.
 
-{{< callout type="info" >}}
-For information on how to obtain the field values, refer to [setting up OpenLDAP as an LDAP provider](../../../tutorials/authentication-provider-setup/setting-up-openldap-as-an-ldap-provider).
-{{< /callout >}}
+!!! info
+    For information on how to obtain the field values, refer to [setting up OpenLDAP as an LDAP provider](../../../tutorials/authentication-provider-setup/setting-up-openldap-as-an-ldap-provider).
 
 | Field                              | Description                                                           |
 | ---------------------------------- | --------------------------------------------------------------------- |

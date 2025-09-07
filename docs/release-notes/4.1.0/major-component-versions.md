@@ -1,7 +1,4 @@
----
-title: Middleware component versions
-weight: 5
----
+# Middleware component versions
 
 The following table presents the versioning information for the major
 middleware components included in the MKE 4k 4.1.0 release.

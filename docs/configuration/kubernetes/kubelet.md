@@ -1,7 +1,4 @@
----
-title: kubelet
-weight: 2
----
+# kubelet
 
 The kubelet component runs on each node in a Kubernetes cluster, which serves
 as the primary administrative agent for each node, monitoring application
@@ -27,7 +24,6 @@ spec:
       ephemeral-storage: 4Gi
       memory: 2Gi
 ```
-
 You can further configure a kubelet using the `extraArgs` field to define
 flags. This field accepts a list of key-value pairs, which are passed directly
 to the kubelet process at runtime.
@@ -41,7 +37,6 @@ spec:
       event-burst: 100
       event-qps: 50
 ```
-
 You can also configure a kubelet with custom profiles. Such profiles offer
 greater control of the `KubeletConfiguration` and can be targeted to specific
 hosts.
@@ -52,11 +47,8 @@ The kubelet root directory is a filesystem path that kubelet uses to store its d
 
 As with MKE 3, MKE 4k follows the upstream Kubernetes default for the kubelet root directory. It offers configuration around that default, though, to provide the option of using a different location. Be aware, though, of the attendant risks that come with setting a non-default location. For example, Kubernetes uses the device plugins Unix socket under host path `/var/lib/kubelet/device`, which is a fixed location that does not vary, even when the kubelet root directory is configured to a non-default location.
 
-{{< callout type="important" >}}
-
-For a managed CNI, if you are using an exact yaml specification, it is imperative that you specify the kubelet root directory location. Various other components may also require specification of the kubelet root directory location in their configuration, as well.
-
-{{< /callout >}}
+!!! important
+    For a managed CNI, if you are using an exact yaml specification, it is imperative that you specify the kubelet root directory location. Various other components may also require specification of the kubelet root directory location in their configuration, as well.
 
 ## kubelet custom profiles
 
@@ -94,15 +86,13 @@ spec:
             nodefs.available: 10%
             nodefs.inodesFree: 5%
 ```
+!!! warning
+    To ensure your custom profile works correctly:
 
-{{< callout type="warning" >}}
-To ensure your custom profile works correctly:
-
-- Cross-check `featureGates` in the custom profile against the official
-  Kubernetes [list of removed feature gates](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates-removed/), as adding a removed feature gate will prevent the kubelet from starting. 
-- Include only namespaced `sysctls` when you configure `allowedUnsafeSysctls`, as non-namespaced `sysctls` are unsupported by the kubelet and will prevent
-  it from starting.
-{{< /callout >}}
+    - Cross-check `featureGates` in the custom profile against the official
+      Kubernetes [list of removed feature gates](https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates-removed/), as adding a removed feature gate will prevent the kubelet from starting. 
+    - Include only namespaced `sysctls` when you configure `allowedUnsafeSysctls`, as non-namespaced `sysctls` are unsupported by the kubelet and will prevent
+      it from starting.
 
 ### Apply a custom profile to a node
 
@@ -129,7 +119,6 @@ hosts:
     installFlags:
       - --profile=worker_profile_1
 ```
-
 ### Debug worker profiles
 
 If an invalid worker profile is provided, the kubelet assigned to use the profile may
@@ -151,7 +140,6 @@ Example of a k0scontroller error caused by an incorrect value for the
 ```bash
 k0s[1619032]: time="2024-11-11 22:25:03" level=error msg="Failed to recover from previously failed reconciliation" component=workerconfig.Reconciler error="failed to generate resources for worker configuration: failed to decode worker profile \"worker_profile_1\": error unmarshaling JSON: while decoding JSON: json: cannot unmarshal string into Go struct field KubeletConfiguration.memoryThrottlingFactor of type float64"
 ```
-
 ## Precedence of kubelet configuration
 
 The kubelet configuration of each node is created by merging several different

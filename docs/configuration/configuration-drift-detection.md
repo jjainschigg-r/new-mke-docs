@@ -1,7 +1,4 @@
----
-title: Configuration Drift Detection
-weight: 12
----
+# Configuration Drift Detection
 
 Configuration drift is when operating environments deviate from a baseline or
 standard configuration over time, causing these environments to become
@@ -25,7 +22,7 @@ drift ignore patch selectors to the MKE 4k configuration. For example, the
 following configuration will disable drift detection for the
 `ingress-nginx-controller` deployment object in `ingress-nginx` namespace:
 
-```
+```yaml
 spec:
   driftDetection:
     driftIgnore:
@@ -35,7 +32,6 @@ spec:
         name: ingress-nginx-controller
         namespace: ingress-nginx
 ```
-
 Thereafter, any changes made to resources deployed by MKE 4k itself will be
 flagged as a configuration drift. Any modifications made directly to the
 `ingress-nginx-controller` deployment, however, will not be detected as drift.
@@ -55,10 +51,11 @@ The patch selector parameters are detailed in the following table:
 | `annotationSelector` | A string that follows the label selection expression, which matches with resource annotations. |
 | `labelSelector`      | A string that follows the label selection expression, which matches with resource labels.      |
 
-{{< callout type="warning" >}} You cannot filter resources by service using
-patch selector parameters. Thus, if you decide to disable drift detection for
-specific resources, ensure that the patch selector is set to filter only
-required cluster resources. {{< /callout >}}
+!!! warning
+    You cannot filter resources by service using
+    patch selector parameters. Thus, if you decide to disable drift detection for
+    specific resources, ensure that the patch selector is set to filter only
+    required cluster resources.
 
 ### Exclude specified fields
 
@@ -68,7 +65,7 @@ drift detection.
 
 Example MKE 4k configuration:
 
-```
+```yaml
 spec:
   driftDetection:
     driftExclusions:

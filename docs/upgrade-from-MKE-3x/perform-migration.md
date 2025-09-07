@@ -1,7 +1,4 @@
----
-title: Perform the Upgrade
-weight: 4
----
+# Perform the Upgrade
 
 An upgrade from MKE 3 to MKE 4k consists of the following steps, all of which
 are performed through the use of the `mkectl` tool:
@@ -16,14 +13,13 @@ are performed through the use of the `mkectl` tool:
 
 To upgrade an MKE 3 cluster, use the `mkectl upgrade` command:
 
-```shell
+```bash
 mkectl upgrade --hosts-path <path-to-hosts-yaml> \
   --mke3-admin-username <admin-username> \
   --mke3-admin-password <admin-password> \
   --external-address <external-address>\
   --config-out <path-to-desired-file-location>
 ```
-
 The `--config-out` flag allows you to specify a path where the MKE 4k configuration
 file will be automatically created and saved during upgrade. If not specified,
 the configuration file prints to your console on completion. In this case, save
@@ -36,16 +32,16 @@ as described in Offline
 installation](../../getting-started/offline-installation/#preparation), and add
 the following flags to the `mkectl upgrade` command:
 
-* `--image-registry=<registry_full_path>`
-* `--chart-registry=oci://<registry_full_path>`
-* `--chart-registry-ca-file=<path/to/ca-cert.pem>`
-* `--image-registry-ca-file=<path/to/ca-cert.pem>`
+* `--image-registry=`
+* `--chart-registry=oci://`
+* `--chart-registry-ca-file=`
+* `--image-registry-ca-file=`
 * `--mke3-airgapped=true`
 
 | Setting                    | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                      |
 |----------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `--image-registry`         | Sets your registry address with a project path that contains your MKE 4k images. For example, `private-registry.example.com:8080/mke`. <br><br>The setting must not end with a slash `/`.<br><br>The port is optional.                                                                                                                                                                                                                                                           |
-| `--chart-registry`         | Sets your registry address with a project path that contains your MKE 4k helm charts in OCI format. For example, `oci://private-registry.example.com:8080/mke`.<br><br>The setting must always start with `oci://`, and it must not end with a slash `/` .<br><br>If you uploaded the bundle as previously described, the registry address and path will be the same for chart and image registry, with the only difference being the `oci://` prefix in the chart registry URL. |
+| `--image-registry`         | Sets your registry address with a project path that contains your MKE 4k images. For example, `private-registry.example.com:8080/mke`. The setting must not end with a slash `/`.The port is optional.                                                                                                                                                                                                                                                           |
+| `--chart-registry`         | Sets your registry address with a project path that contains your MKE 4k helm charts in OCI format. For example, `oci://private-registry.example.com:8080/mke`.The setting must always start with `oci://`, and it must not end with a slash `/` .If you uploaded the bundle as previously described, the registry address and path will be the same for chart and image registry, with the only difference being the `oci://` prefix in the chart registry URL. |
 | `--chart-registry-ca-file` | 	Sets the path to the PEM encoded certificate of the Certificate Authority that issued chart registry TLS certificates. Optional. Must be provided if registry is using TLS certs issued by a non-publicly trusted CA.                                                                                                                                                                                                                                                           |
 | `--image-registry-ca-file` | 	Sets the path to the PEM encoded certificate of the Certificate Authority that issued image registry TLS certificates. Optional. Must be provided if registry is using TLS certs issued by a non-publicly trusted CA.                                                                                                                                                                                                                                                           |
 | `--mke3-airgapped=true`    | Indicates that your environment is airgapped.                                                                                                                                                                                                                                                                                                                                                                                                                                    |
@@ -55,9 +51,9 @@ the following flags to the `mkectl upgrade` command:
 In the event of an upgrade failure, the upgrade process rolls back,
 restoring the MKE 3 cluster to its original state.
 
-{{< details title="Example: Rollback output" closed="true" >}}
+{{}}
 
-```shell
+```bash
 WARN[0096] Initiating rollback because of upgrade failure. upgradeErr = aborting upgrade due to signal interrupt
 INFO[0096] Initiating rollback of MKE to version: 3.7.15
 INFO[0096] Step 1 of 2: [Rollback Upgrade Tasks]
@@ -110,15 +106,10 @@ INFO[0178] [Rollback Pre Upgrade Tasks] Completed
 INFO[0178] Rollback to MKE version 3.7.15 completed successfully ...
 FATA[0178] Upgrade failed due to error: aborting upgrade due to signal interrupt
 ```
+{{}}
 
-{{< /details >}}
-
-{{< callout type="info" >}}
-
-A failed upgrade can leave behind an empty or corrupted `~/.mke/mke.kubeconf` file, which will block any subsequent upgrade attempts. To resolve this issue, manually delete the file:
-```bash
+!!! info
+    A failed upgrade can leave behind an empty or corrupted `~/.mke/mke.kubeconf` file, which will block any subsequent upgrade attempts. To resolve this issue, manually delete the file:
+    ```bash
 rm -f ~/.mke/mke.kubeconf
-```
-Following this action, during the next upgrade, the system will automatically generate a valid configuration.
-
-{{< /callout >}}
+    ```    Following this action, during the next upgrade, the system will automatically generate a valid configuration.

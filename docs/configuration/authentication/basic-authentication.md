@@ -1,17 +1,17 @@
----
-title: Basic authentication
-weight: 1
----
+# Basic authentication
+
+!!! note
+    Mirantis strongly recommends against using local users for authentication. Such
+    users should only be used for bootstrapping and development purposes.
 
 By default, whenever you create a fresh cluster, an admin user is created,
 with the username `admin` and a randomly generated password.
 This password is printed out following the successful creation of the cluster.
 
-{{< callout type="info" >}}
-The password is printed following the successful creation of the cluster.
-It is not stored anywhere on the cluster, and it is not possible to retrieve it
-later. Thus, if the password is not saved in the install output logs, you must recreate the cluster to gain access.
-{{< /callout >}}
+!!! info
+    The password is printed following the successful creation of the cluster.
+    It is not stored anywhere on the cluster, and it is not possible to retrieve it
+    later. Thus, if the password is not saved in the install output logs, you must recreate the cluster to gain access.
 
 An admin user can create users, change user passwords, and delete users from
 the MKE 4k system.
@@ -30,10 +30,9 @@ the MKE 4k system.
    * **password**
    * **confirm password**
 
-   {{< callout type="info" >}}
-   You can enter the name of the user into the **name** field, however this is
-   optional and the input is not in use in MKE 4k.
-   {{< /callout >}}
+!!! info
+    You can enter the name of the user into the **name** field, however this is
+       optional and the input is not in use in MKE 4k.
 
 5. Optional. If the user you are creating is to be an admin, tick the
    **admin** checkbox.
@@ -78,3 +77,20 @@ user page.
    dialog will display.
 
 3. Click **Delete** to remove the user from the MKE 4k system.
+
+## Disable local users
+
+You can disable local users by adding the ``authentication.localUsers``
+parameter to the ``mke4k.yaml`` configuration file and setting it to ``false``:
+
+```yaml
+authentication:
+  localUsers: false
+```
+As a result, the default admin user is not created and all services related to
+user management are shut down.
+
+!!! note
+    If you choose to disable local users, be sure to configure one of the other
+    authentication methods for MKE 4k. For more information, refer
+    to [LDAP](../ldap), [OIDC](../oidc), and [SAML](../saml).

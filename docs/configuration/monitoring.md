@@ -1,7 +1,4 @@
----
-title: Monitoring
-weight: 4
----
+# Monitoring
 
 The MKE 4k monitoring setup is based on the [kube-prometheus-stack](https://github.com/prometheus-community/helm-charts/tree/main/charts/kube-prometheus-stack),
 offering a comprehensive solution for collecting, storing, and visualizing metrics.
@@ -23,16 +20,15 @@ Detail for the MKE 4k monitor tools is provided in the following table:
 toolkit, designed for reliability and scalability, that collects and stores metrics
 as time series data. It offers powerful query capabilities and a flexible alerting system.
 
-The Prometheus API is available at `https://<mke4_url>/prometheus/`
+The Prometheus API is available at `https:///prometheus/`
 
 To access the Prometheus dashboard:
 
 1. Port forward Prometheus:
 
     ```bash
-    kubectl --namespace mke port-forward svc/prometheus-operated 9090
+kubectl --namespace mke port-forward svc/prometheus-operated 9090
     ```
-
 2. Navigate to `http://localhost:9090`.
 
 ## Grafana
@@ -46,21 +42,18 @@ Grafana is enabled in MKE 4k by default and may be disabled through the `mke4.ya
 monitoring:
   enableGrafana: true
 ```
-
 To access the Grafana dashboard:
 
 1. Obtain the `admin` user password for the Grafana dashboard from the `monitoring-grafana` secret in the `mke` namespace.
 
    ```bash
-   kubectl get secret monitoring-grafana -n mke -o jsonpath="{.data.admin-password}" | base64 --decode
+kubectl get secret monitoring-grafana -n mke -o jsonpath="{.data.admin-password}" | base64 --decode
    ```
-
 2. Port forward Grafana:
 
     ```bash
-    kubectl --namespace mke port-forward svc/monitoring-grafana 3000:80
+kubectl --namespace mke port-forward svc/monitoring-grafana 3000:80
     ```
-
 3. Navigate to `http://localhost:3000` to access the **Welcome to Grafana** login page.
 
 4. Enter the default username **admin** into the **Email or username** field and type the password you retrieved from the `monitoring-grafana` secret into the **Password** field.
@@ -78,7 +71,6 @@ cAdvisor is disabled in MKE 4k by default. You can enable the tool through the `
 monitoring:
   enableCAdvisor: true
 ```
-
 ## OpsCare (Under development)
 
 [Mirantis OpsCare](https://www.mirantis.com/resources/opscare-datasheet/) is

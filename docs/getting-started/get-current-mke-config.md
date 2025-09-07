@@ -1,14 +1,10 @@
----
-title: Obtain the current MKE 4k configuration file
-weight: 7
----
+# Obtain the current MKE 4k configuration file
 
 To obtain the current `mke4.yaml` configuration file for your MKE 4k cluster, run:
 
-```shell
+```bash
 mkectl --kubeconfig ~/.mke/mke.kubeconf config get
 ```
-
 There are numerous reasons why you may need to procure the `mke4.yaml` configuration file, including:
 
 * To make changes to your `mke4.yaml` configuration file using the MKE 4k web
